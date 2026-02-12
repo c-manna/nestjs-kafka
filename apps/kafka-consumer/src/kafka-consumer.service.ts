@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { MessagePattern } from '@nestjs/microservices';
 
 @Injectable()
 export class KafkaConsumerService {
@@ -7,8 +6,4 @@ export class KafkaConsumerService {
     return 'Hello World!';
   }
 
-  @MessagePattern('test-topic')
-  consumeMessage(message: any) {
-    console.log('Received message:', message);
-  }
 }
