@@ -40,7 +40,13 @@ async function bootstrap() {
         brokers: ['localhost:9092'],
       },
       consumer: {
-        groupId: 'nestjs-server-v1',
+        groupId: 'nestjs-consumer-group-1',
+        sessionTimeout: 30000,
+        heartbeatInterval: 3000,
+      },
+      run: {
+        autoCommit: false, // IMPORTANT
+        // partitionsConsumedConcurrently: 1, // optional
       },
     },
   });
@@ -49,4 +55,3 @@ async function bootstrap() {
   await app.listen(3001); // HTTP port
 }
 bootstrap();
-

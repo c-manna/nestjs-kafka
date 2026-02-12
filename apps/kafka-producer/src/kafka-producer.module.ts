@@ -21,6 +21,11 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
           },
           producer: {
             allowAutoTopicCreation: true,
+            idempotent: true, // enable idempotent producer
+            maxInFlightRequests: 1, // safest ordering with retries
+            retry: {
+              retries: 10,
+            },
           },
         },
       },

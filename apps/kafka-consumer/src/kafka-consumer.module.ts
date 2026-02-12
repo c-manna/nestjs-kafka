@@ -5,7 +5,20 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
 
 @Module({
   imports: [
-
+    // ClientsModule.register([
+    //   {
+    //     name: 'KAFKA_SERVICE',
+    //     transport: Transport.KAFKA,
+    //     options: {
+    //       client: {
+    //         brokers: ['localhost:9092'], // Add all brokers here
+    //       },
+    //       consumer: {
+    //         groupId: 'nestjs-consumer-group-1',
+    //       },
+    //     },
+    //   },
+    // ]),
   ],
   controllers: [KafkaConsumerController],
   providers: [KafkaConsumerService],

@@ -8,13 +8,18 @@ async function bootstrap() {
     transport: Transport.KAFKA,
     options: {
       client: {
-        brokers: ['localhost:9092'],  // Add all brokers here
+        brokers: ['localhost:9092'], // Add all brokers here
       },
       consumer: {
         groupId: 'nestjs-group',
       },
       producer: {
         allowAutoTopicCreation: true, // Enable auto topic creation
+        idempotent: true, // enable idempotent producer
+        maxInFlightRequests: 1, // safest ordering with retries
+        retry: {
+          retries: 10,
+        },
       },
     },
   });
